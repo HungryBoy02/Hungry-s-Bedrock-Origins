@@ -1,0 +1,4683 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:player",
+			"spawn_category": "creature",
+			"is_spawnable": false,
+			"is_summonable": false
+		},
+		"component_groups": {
+			"minecraft:add_raid_omen": {
+				"minecraft:spell_effects": {
+					"add_effects": [
+						{
+							"effect": "raid_omen",
+							"duration": 30,
+							"display_on_screen_animation": true
+						}
+					],
+					"remove_effects": "bad_omen"
+				},
+				"minecraft:timer": {
+					"time": [
+						0,
+						0
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "minecraft:clear_add_raid_omen",
+						"target": "self"
+					}
+				}
+			},
+			"minecraft:clear_raid_omen_spell_effect": {
+				"minecraft:spell_effects": {}
+			},
+			"minecraft:raid_trigger": {
+				"minecraft:raid_trigger": {
+					"triggered_event": {
+						"event": "minecraft:remove_raid_trigger",
+						"target": "self"
+					}
+				}
+			},
+			//HOrigins
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "fall",
+						"deals_damage": false,
+						"filters": {
+							"test": "has_tag",
+							"subject": "self",
+							"operator": "==",
+							"value": "horigins.fallimmunity"
+						}
+					}
+				]
+			},
+			/*"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "all",
+						"deals_damage": false,
+						"on_damage": {
+							"filters": {
+								"any_of": [
+									{
+										"all_of": [
+											{
+												"any_of": [
+													{
+														"test": "has_tag",
+														"value": "horigins.fallimmunity"
+													}
+												]
+											},
+											{
+												"test": "has_damage",
+												"value": "fall"
+											}
+										]
+									},
+									{
+										"all_of": [
+											{
+												"test": "has_tag",
+												"value": "horigins.fallingblockimmunity"
+											},
+											{
+												"any_of": [
+													{
+														"test": "has_damage",
+														"value": "attack"
+													},
+													{
+														"test": "has_damage",
+														"value": "contact"
+													},
+													{
+														"test": "has_damage",
+														"value": "falling_block"
+													},
+													{
+														"test": "has_damage",
+														"value": "projectile"
+													},
+													{
+														"test": "has_damage",
+														"value": "suffocation"
+													},
+													{
+														"test": "has_damage",
+														"value": "stalactite"
+													},
+													{
+														"test": "has_damage",
+														"value": "stalagmite"
+													}
+												]
+											}
+										]
+									},
+									{
+										"all_of": [
+											{
+												"test": "has_tag",
+												"value": "horigins.sweetbushimmunity"
+											},
+											{
+												"test": "is_block",
+												"subject": "block",
+												"value": "minecraft:sweet_berry_bush"
+											}
+										]
+									}
+								]
+							}
+						}
+					}
+				]
+			},//*/
+			"horigins:movement.0.05": {
+				"minecraft:movement": {
+					"value": 0.05
+				}
+			},
+			"horigins:movement.0.1": { // DEFAULT VANILLA MOVEMENT
+				"minecraft:movement": {
+					"value": 0.1
+				}
+			},
+			"horigins:movement.0.15": {
+				"minecraft:movement": {
+					"value": 0.15
+				}
+			},
+			"horigins:movement.0.2": {
+				"minecraft:movement": {
+					"value": 0.2
+				}
+			},
+			"horigins:movement.0.25": {
+				"minecraft:movement": {
+					"value": 0.25
+				}
+			},
+			"horigins:movement.0.3": {
+				"minecraft:movement": {
+					"value": 0.3
+				}
+			},
+			"horigins:movement.0.35": {
+				"minecraft:movement": {
+					"value": 0.35
+				}
+			},
+			"horigins:movement.0.4": {
+				"minecraft:movement": {
+					"value": 0.4
+				}
+			},
+			"horigins:movement.0.45": {
+				"minecraft:movement": {
+					"value": 0.45
+				}
+			},
+			"horigins:movement.0.5": {
+				"minecraft:movement": {
+					"value": 0.5
+				}
+			},
+			"horigins:health.1": {
+				"minecraft:health": {
+					"max": 1
+				}
+			},
+			"horigins:health.2": {
+				"minecraft:health": {
+					"max": 2
+				}
+			},
+			"horigins:health.3": {
+				"minecraft:health": {
+					"max": 3
+				}
+			},
+			"horigins:health.4": {
+				"minecraft:health": {
+					"max": 4
+				}
+			},
+			"horigins:health.5": {
+				"minecraft:health": {
+					"max": 5
+				}
+			},
+			"horigins:health.6": {
+				"minecraft:health": {
+					"max": 6
+				}
+			},
+			"horigins:health.7": {
+				"minecraft:health": {
+					"max": 7
+				}
+			},
+			"horigins:health.8": {
+				"minecraft:health": {
+					"max": 8
+				}
+			},
+			"horigins:health.9": {
+				"minecraft:health": {
+					"max": 9
+				}
+			},
+			"horigins:health.10": {
+				"minecraft:health": {
+					"max": 10
+				}
+			},
+			"horigins:health.11": {
+				"minecraft:health": {
+					"max": 11
+				}
+			},
+			"horigins:health.12": {
+				"minecraft:health": {
+					"max": 12
+				}
+			},
+			"horigins:health.13": {
+				"minecraft:health": {
+					"max": 13
+				}
+			},
+			"horigins:health.14": {
+				"minecraft:health": {
+					"max": 14
+				}
+			},
+			"horigins:health.15": {
+				"minecraft:health": {
+					"max": 15
+				}
+			},
+			"horigins:health.16": {
+				"minecraft:health": {
+					"max": 16
+				}
+			},
+			"horigins:health.17": {
+				"minecraft:health": {
+					"max": 17
+				}
+			},
+			"horigins:health.18": {
+				"minecraft:health": {
+					"max": 18
+				}
+			},
+			"horigins:health.19": {
+				"minecraft:health": {
+					"max": 19
+				}
+			},
+			"horigins:health.20": {
+				"minecraft:health": {
+					"max": 20
+				}
+			},
+			"horigins:health.21": {
+				"minecraft:health": {
+					"max": 21
+				}
+			},
+			"horigins:health.22": {
+				"minecraft:health": {
+					"max": 22
+				}
+			},
+			"horigins:health.23": {
+				"minecraft:health": {
+					"max": 23
+				}
+			},
+			"horigins:health.24": {
+				"minecraft:health": {
+					"max": 24
+				}
+			},
+			"horigins:health.25": {
+				"minecraft:health": {
+					"max": 25
+				}
+			},
+			"horigins:health.26": {
+				"minecraft:health": {
+					"max": 26
+				}
+			},
+			"horigins:health.27": {
+				"minecraft:health": {
+					"max": 27
+				}
+			},
+			"horigins:health.28": {
+				"minecraft:health": {
+					"max": 28
+				}
+			},
+			"horigins:health.29": {
+				"minecraft:health": {
+					"max": 29
+				}
+			},
+			"horigins:health.30": {
+				"minecraft:health": {
+					"max": 30
+				}
+			},
+			"horigins:health.31": {
+				"minecraft:health": {
+					"max": 31
+				}
+			},
+			"horigins:health.32": {
+				"minecraft:health": {
+					"max": 32
+				}
+			},
+			"horigins:health.33": {
+				"minecraft:health": {
+					"max": 33
+				}
+			},
+			"horigins:health.34": {
+				"minecraft:health": {
+					"max": 34
+				}
+			},
+			"horigins:health.35": {
+				"minecraft:health": {
+					"max": 35
+				}
+			},
+			"horigins:health.36": {
+				"minecraft:health": {
+					"max": 36
+				}
+			},
+			"horigins:health.37": {
+				"minecraft:health": {
+					"max": 37
+				}
+			},
+			"horigins:health.38": {
+				"minecraft:health": {
+					"max": 38
+				}
+			},
+			"horigins:health.39": {
+				"minecraft:health": {
+					"max": 39
+				}
+			},
+			"horigins:health.40": {
+				"minecraft:health": {
+					"max": 40
+				}
+			},
+			"horigins:health.41": {
+				"minecraft:health": {
+					"max": 41
+				}
+			},
+			"horigins:health.42": {
+				"minecraft:health": {
+					"max": 42
+				}
+			},
+			"horigins:health.43": {
+				"minecraft:health": {
+					"max": 43
+				}
+			},
+			"horigins:health.44": {
+				"minecraft:health": {
+					"max": 44
+				}
+			},
+			"horigins:health.45": {
+				"minecraft:health": {
+					"max": 45
+				}
+			},
+			"horigins:health.46": {
+				"minecraft:health": {
+					"max": 46
+				}
+			},
+			"horigins:health.47": {
+				"minecraft:health": {
+					"max": 47
+				}
+			},
+			"horigins:health.48": {
+				"minecraft:health": {
+					"max": 48
+				}
+			},
+			"horigins:health.49": {
+				"minecraft:health": {
+					"max": 49
+				}
+			},
+			"horigins:health.50": {
+				"minecraft:health": {
+					"max": 50
+				}
+			},
+			"horigins:health.51": {
+				"minecraft:health": {
+					"max": 51
+				}
+			},
+			"horigins:health.52": {
+				"minecraft:health": {
+					"max": 52
+				}
+			},
+			"horigins:health.53": {
+				"minecraft:health": {
+					"max": 53
+				}
+			},
+			"horigins:health.54": {
+				"minecraft:health": {
+					"max": 54
+				}
+			},
+			"horigins:health.55": {
+				"minecraft:health": {
+					"max": 55
+				}
+			},
+			"horigins:health.56": {
+				"minecraft:health": {
+					"max": 56
+				}
+			},
+			"horigins:health.57": {
+				"minecraft:health": {
+					"max": 57
+				}
+			},
+			"horigins:health.58": {
+				"minecraft:health": {
+					"max": 58
+				}
+			},
+			"horigins:health.59": {
+				"minecraft:health": {
+					"max": 59
+				}
+			},
+			"horigins:health.60": {
+				"minecraft:health": {
+					"max": 60
+				}
+			},
+			"horigins:health.61": {
+				"minecraft:health": {
+					"max": 61
+				}
+			},
+			"horigins:health.62": {
+				"minecraft:health": {
+					"max": 62
+				}
+			},
+			"horigins:health.63": {
+				"minecraft:health": {
+					"max": 63
+				}
+			},
+			"horigins:health.64": {
+				"minecraft:health": {
+					"max": 64
+				}
+			},
+			"horigins:health.65": {
+				"minecraft:health": {
+					"max": 65
+				}
+			},
+			"horigins:health.66": {
+				"minecraft:health": {
+					"max": 66
+				}
+			},
+			"horigins:health.67": {
+				"minecraft:health": {
+					"max": 67
+				}
+			},
+			"horigins:health.68": {
+				"minecraft:health": {
+					"max": 68
+				}
+			},
+			"horigins:health.69": {
+				"minecraft:health": {
+					"max": 69
+				}
+			},
+			"horigins:health.70": {
+				"minecraft:health": {
+					"max": 70
+				}
+			},
+			"horigins:health.71": {
+				"minecraft:health": {
+					"max": 71
+				}
+			},
+			"horigins:health.72": {
+				"minecraft:health": {
+					"max": 72
+				}
+			},
+			"horigins:health.73": {
+				"minecraft:health": {
+					"max": 73
+				}
+			},
+			"horigins:health.74": {
+				"minecraft:health": {
+					"max": 74
+				}
+			},
+			"horigins:health.75": {
+				"minecraft:health": {
+					"max": 75
+				}
+			},
+			"horigins:health.76": {
+				"minecraft:health": {
+					"max": 76
+				}
+			},
+			"horigins:health.77": {
+				"minecraft:health": {
+					"max": 77
+				}
+			},
+			"horigins:health.78": {
+				"minecraft:health": {
+					"max": 78
+				}
+			},
+			"horigins:health.79": {
+				"minecraft:health": {
+					"max": 79
+				}
+			},
+			"horigins:health.80": {
+				"minecraft:health": {
+					"max": 80
+				}
+			},
+			"horigins:health.81": {
+				"minecraft:health": {
+					"max": 81
+				}
+			},
+			"horigins:health.82": {
+				"minecraft:health": {
+					"max": 82
+				}
+			},
+			"horigins:health.83": {
+				"minecraft:health": {
+					"max": 83
+				}
+			},
+			"horigins:health.84": {
+				"minecraft:health": {
+					"max": 84
+				}
+			},
+			"horigins:health.85": {
+				"minecraft:health": {
+					"max": 85
+				}
+			},
+			"horigins:health.86": {
+				"minecraft:health": {
+					"max": 86
+				}
+			},
+			"horigins:health.87": {
+				"minecraft:health": {
+					"max": 87
+				}
+			},
+			"horigins:health.88": {
+				"minecraft:health": {
+					"max": 88
+				}
+			},
+			"horigins:health.89": {
+				"minecraft:health": {
+					"max": 89
+				}
+			},
+			"horigins:health.90": {
+				"minecraft:health": {
+					"max": 90
+				}
+			},
+			"horigins:health.91": {
+				"minecraft:health": {
+					"max": 91
+				}
+			},
+			"horigins:health.92": {
+				"minecraft:health": {
+					"max": 92
+				}
+			},
+			"horigins:health.93": {
+				"minecraft:health": {
+					"max": 93
+				}
+			},
+			"horigins:health.94": {
+				"minecraft:health": {
+					"max": 94
+				}
+			},
+			"horigins:health.95": {
+				"minecraft:health": {
+					"max": 95
+				}
+			},
+			"horigins:health.96": {
+				"minecraft:health": {
+					"max": 96
+				}
+			},
+			"horigins:health.97": {
+				"minecraft:health": {
+					"max": 97
+				}
+			},
+			"horigins:health.98": {
+				"minecraft:health": {
+					"max": 98
+				}
+			},
+			"horigins:health.99": {
+				"minecraft:health": {
+					"max": 99
+				}
+			},
+			"horigins:health.100": {
+				"minecraft:health": {
+					"max": 100
+				}
+			},
+			"horigins:health.101": {
+				"minecraft:health": {
+					"max": 101
+				}
+			},
+			"horigins:health.102": {
+				"minecraft:health": {
+					"max": 102
+				}
+			},
+			"horigins:health.103": {
+				"minecraft:health": {
+					"max": 103
+				}
+			},
+			"horigins:health.104": {
+				"minecraft:health": {
+					"max": 104
+				}
+			},
+			"horigins:health.105": {
+				"minecraft:health": {
+					"max": 105
+				}
+			},
+			"horigins:health.106": {
+				"minecraft:health": {
+					"max": 106
+				}
+			},
+			"horigins:health.107": {
+				"minecraft:health": {
+					"max": 107
+				}
+			},
+			"horigins:health.108": {
+				"minecraft:health": {
+					"max": 108
+				}
+			},
+			"horigins:health.109": {
+				"minecraft:health": {
+					"max": 109
+				}
+			},
+			"horigins:health.110": {
+				"minecraft:health": {
+					"max": 110
+				}
+			},
+			"horigins:health.111": {
+				"minecraft:health": {
+					"max": 111
+				}
+			},
+			"horigins:health.112": {
+				"minecraft:health": {
+					"max": 112
+				}
+			},
+			"horigins:health.113": {
+				"minecraft:health": {
+					"max": 113
+				}
+			},
+			"horigins:health.114": {
+				"minecraft:health": {
+					"max": 114
+				}
+			},
+			"horigins:health.115": {
+				"minecraft:health": {
+					"max": 115
+				}
+			},
+			"horigins:health.116": {
+				"minecraft:health": {
+					"max": 116
+				}
+			},
+			"horigins:health.117": {
+				"minecraft:health": {
+					"max": 117
+				}
+			},
+			"horigins:health.118": {
+				"minecraft:health": {
+					"max": 118
+				}
+			},
+			"horigins:health.119": {
+				"minecraft:health": {
+					"max": 119
+				}
+			},
+			"horigins:health.120": {
+				"minecraft:health": {
+					"max": 120
+				}
+			},
+			"horigins:health.121": {
+				"minecraft:health": {
+					"max": 121
+				}
+			},
+			"horigins:health.122": {
+				"minecraft:health": {
+					"max": 122
+				}
+			},
+			"horigins:health.123": {
+				"minecraft:health": {
+					"max": 123
+				}
+			},
+			"horigins:health.124": {
+				"minecraft:health": {
+					"max": 124
+				}
+			},
+			"horigins:health.125": {
+				"minecraft:health": {
+					"max": 125
+				}
+			},
+			"horigins:health.126": {
+				"minecraft:health": {
+					"max": 126
+				}
+			},
+			"horigins:health.127": {
+				"minecraft:health": {
+					"max": 127
+				}
+			},
+			"horigins:health.128": {
+				"minecraft:health": {
+					"max": 128
+				}
+			},
+			"horigins:health.129": {
+				"minecraft:health": {
+					"max": 129
+				}
+			},
+			"horigins:health.130": {
+				"minecraft:health": {
+					"max": 130
+				}
+			},
+			"horigins:health.131": {
+				"minecraft:health": {
+					"max": 131
+				}
+			},
+			"horigins:health.132": {
+				"minecraft:health": {
+					"max": 132
+				}
+			},
+			"horigins:health.133": {
+				"minecraft:health": {
+					"max": 133
+				}
+			},
+			"horigins:health.134": {
+				"minecraft:health": {
+					"max": 134
+				}
+			},
+			"horigins:health.135": {
+				"minecraft:health": {
+					"max": 135
+				}
+			},
+			"horigins:health.136": {
+				"minecraft:health": {
+					"max": 136
+				}
+			},
+			"horigins:health.137": {
+				"minecraft:health": {
+					"max": 137
+				}
+			},
+			"horigins:health.138": {
+				"minecraft:health": {
+					"max": 138
+				}
+			},
+			"horigins:health.139": {
+				"minecraft:health": {
+					"max": 139
+				}
+			},
+			"horigins:health.140": {
+				"minecraft:health": {
+					"max": 140
+				}
+			},
+			"horigins:health.141": {
+				"minecraft:health": {
+					"max": 141
+				}
+			},
+			"horigins:health.142": {
+				"minecraft:health": {
+					"max": 142
+				}
+			},
+			"horigins:health.143": {
+				"minecraft:health": {
+					"max": 143
+				}
+			},
+			"horigins:health.144": {
+				"minecraft:health": {
+					"max": 144
+				}
+			},
+			"horigins:health.145": {
+				"minecraft:health": {
+					"max": 145
+				}
+			},
+			"horigins:health.146": {
+				"minecraft:health": {
+					"max": 146
+				}
+			},
+			"horigins:health.147": {
+				"minecraft:health": {
+					"max": 147
+				}
+			},
+			"horigins:health.148": {
+				"minecraft:health": {
+					"max": 148
+				}
+			},
+			"horigins:health.149": {
+				"minecraft:health": {
+					"max": 149
+				}
+			},
+			"horigins:health.150": {
+				"minecraft:health": {
+					"max": 150
+				}
+			},
+			"horigins:attack.0": {
+				"minecraft:attack": {
+					"damage": 0
+				}
+			},
+			"horigins:attack.1": {
+				"minecraft:attack": {
+					"damage": 1
+				}
+			},
+			"horigins:attack.2": {
+				"minecraft:attack": {
+					"damage": 2
+				}
+			},
+			"horigins:attack.5": {
+				"minecraft:attack": {
+					"damage": 5
+				}
+			},
+			"horigins:attack.7": {
+				"minecraft:attack": {
+					"damage": 7
+				}
+			},
+			"horigins:attack.8": {
+				"minecraft:attack": {
+					"damage": 8
+				}
+			},
+			"horigins:attack.9": {
+				"minecraft:attack": {
+					"damage": 9
+				}
+			},
+			"horigins:attack.10": {
+				"minecraft:attack": {
+					"damage": 10
+				}
+			},
+			"horigins:scale.0.25": {
+				"minecraft:scale": {
+					"value": 0.25
+				}
+			},
+			"horigins:scale.0.5": {
+				"minecraft:scale": {
+					"value": 0.5
+				}
+			},
+			"horigins:scale.0.75": {
+				"minecraft:scale": {
+					"value": 0.75
+				}
+			},
+			"horigins:scale.1": {
+				"minecraft:scale": {
+					"value": 1
+				}
+			},
+			"horigins:scale.1.25": {
+				"minecraft:scale": {
+					"value": 1.25
+				}
+			},
+			"horigins:scale.1.5": {
+				"minecraft:scale": {
+					"value": 1.5
+				}
+			},
+			"horigins:scale.1.75": {
+				"minecraft:scale": {
+					"value": 1.75
+				}
+			},
+			"horigins:scale.2": {
+				"minecraft:scale": {
+					"value": 2
+				}
+			},
+			"horigins:scale.2.25": {
+				"minecraft:scale": {
+					"value": 2.25
+				}
+			},
+			"horigins:scale.2.5": {
+				"minecraft:scale": {
+					"value": 2.5
+				}
+			},
+			"horigins:scale.2.75": {
+				"minecraft:scale": {
+					"value": 2.75
+				}
+			},
+			"horigins:scale.3": {
+				"minecraft:scale": {
+					"value": 3
+				}
+			},
+			"horigins:exhaustion.normal": {
+				"minecraft:exhaustion_values": {
+					"heal": 6,
+					"jump": 0.05,
+					"sprint_jump": 0.2,
+					"mine": 0.005,
+					"attack": 0.1,
+					"damage": 0.1,
+					"walk": 0.0,
+					"sprint": 0.1,
+					"swim": 0.01
+				}
+			},
+			"horigins:exhaustion.nonefrommovement": {
+				"minecraft:exhaustion_values": {
+					"jump": 0,
+					"sprint_jump": 0,
+					"walk": 0.0,
+					"sprint": 0,
+					"swim": 0
+				}
+			},
+			"horigins:exhaustion.inneficienthealing": {
+				"minecraft:exhaustion_values": {
+					"heal": 15
+				}
+			},
+			"horigins:exhaustion.nonefrommining": {
+				"minecraft:exhaustion_values": {
+					"mine": 0
+				}
+			},
+			"horigins:breathable.land": {
+				"minecraft:breathable": {
+					"total_supply": 15,
+					"suffocate_time": -1,
+					"inhale_time": 3.75,
+					"generates_bubbles": false
+				}
+			},
+			"horigins:breathable.underwater": {
+				"minecraft:breathable": {
+					"total_supply": 15,
+					"suffocate_time": -1,
+					"inhale_time": 3.75,
+					"generates_bubbles": false,
+					"breathes_air": false,
+					"breathes_water": true
+				}
+			},
+			"horigins:buoyant.float_on_water": {
+				"minecraft:buoyant": {
+					"base_buoyancy": 1.0,
+					"apply_gravity": false,
+					"simulate_waves": true,
+					"liquid_blocks": [
+						"minecraft:water",
+						"minecraft:flowing_water"
+					]
+				}
+			}
+		},
+		"components": {
+			"minecraft:experience_reward": {
+				"on_death": "Math.Min(query.player_level * 7, 100)"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"player"
+				]
+			},
+			"minecraft:is_hidden_when_invisible": {},
+			"minecraft:loot": {
+				"table": "loot_tables/empty.json"
+			},
+			"minecraft:collision_box": {
+				"width": 0.6,
+				"height": 1.8
+			},
+			"minecraft:can_climb": {},
+			"minecraft:movement": {
+				"value": 0.1
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:attack": {
+				"damage": 1
+			},
+			"minecraft:exhaustion_values": {
+				"heal": 6,
+				"jump": 0.05,
+				"sprint_jump": 0.2,
+				"mine": 0.005,
+				"attack": 0.1,
+				"damage": 0.1,
+				"walk": 0,
+				"sprint": 0.1,
+				"swim": 0.01
+			},
+			"minecraft:player.saturation": {
+				"value": 5,
+				"max": 20
+			},
+			"minecraft:player.exhaustion": {
+				"value": 0,
+				"max": 20
+			},
+			"minecraft:player.level": {
+				"value": 0,
+				"max": 24791
+			},
+			"minecraft:player.experience": {
+				"value": 0,
+				"max": 1
+			},
+			"minecraft:breathable": {
+				"total_supply": 15,
+				"suffocate_time": -1,
+				"inhale_time": 3.75,
+				"generates_bubbles": false
+			},
+			"minecraft:nameable": {
+				"always_show": true,
+				"allow_name_tag_renaming": false
+			},
+			"minecraft:physics": {
+				"push_towards_closest_space": true
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:insomnia": {
+				"days_until_insomnia": 3
+			},
+			"minecraft:rideable": {
+				"seat_count": 2,
+				"family_types": [
+					"parrot_tame"
+				],
+				"pull_in_entities": true,
+				"seats": [
+					{
+						"position": [
+							0.4,
+							-0.2,
+							-0.1
+						],
+						"min_rider_count": 0,
+						"max_rider_count": 0,
+						"lock_rider_rotation": 0
+					},
+					{
+						"position": [
+							-0.4,
+							-0.2,
+							-0.1
+						],
+						"min_rider_count": 1,
+						"max_rider_count": 2,
+						"lock_rider_rotation": 0
+					}
+				]
+			},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:block_climber": {},
+			"minecraft:environment_sensor": {
+				"triggers": {
+					"filters": {
+						"all_of": [
+							{
+								"test": "has_mob_effect",
+								"subject": "self",
+								"value": "bad_omen"
+							},
+							{
+								"test": "is_in_village",
+								"subject": "self",
+								"value": true
+							}
+						]
+					},
+					"event": "minecraft:gain_raid_omen"
+				}
+			}
+		},
+		"events": {
+			"minecraft:gain_raid_omen": {
+				"add": {
+					"component_groups": [
+						"minecraft:add_raid_omen"
+					]
+				}
+			},
+			"minecraft:clear_add_raid_omen": {
+				"remove": {
+					"component_groups": [
+						"minecraft:add_raid_omen"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:clear_raid_omen_spell_effect"
+					]
+				}
+			},
+			"minecraft:trigger_raid": {
+				"add": {
+					"component_groups": [
+						"minecraft:raid_trigger"
+					]
+				}
+			},
+			"minecraft:remove_raid_trigger": {
+				"remove": {
+					"component_groups": [
+						"minecraft:raid_trigger"
+					]
+				}
+			},
+			// HOrigins
+			"horigins:movement.0.05": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.05"
+					]
+				}
+			},
+			"horigins:movement.0.1": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.1"
+					]
+				}
+			},
+			"horigins:movement.0.15": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.15"
+					]
+				}
+			},
+			"horigins:movement.0.2": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.2"
+					]
+				}
+			},
+			"horigins:movement.0.25": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.25"
+					]
+				}
+			},
+			"horigins:movement.0.3": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.3"
+					]
+				}
+			},
+			"horigins:movement.0.35": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.35"
+					]
+				}
+			},
+			"horigins:movement.0.4": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.4"
+					]
+				}
+			},
+			"horigins:movement.0.45": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.45"
+					]
+				}
+			},
+			"horigins:movement.0.5": {
+				"add": {
+					"component_groups": [
+						"horigins:movement.0.5"
+					]
+				}
+			},
+			"horigins:health.1": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.1"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 1
+						}
+					}
+				]
+			},
+			"horigins:health.2": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.2"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 2
+						}
+					}
+				]
+			},
+			"horigins:health.3": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.3"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 3
+						}
+					}
+				]
+			},
+			"horigins:health.4": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.4"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 4
+						}
+					}
+				]
+			},
+			"horigins:health.5": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.5"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 5
+						}
+					}
+				]
+			},
+			"horigins:health.6": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.6"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 6
+						}
+					}
+				]
+			},
+			"horigins:health.7": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.7"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 7
+						}
+					}
+				]
+			},
+			"horigins:health.8": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.8"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 8
+						}
+					}
+				]
+			},
+			"horigins:health.9": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.9"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 9
+						}
+					}
+				]
+			},
+			"horigins:health.10": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.10"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 10
+						}
+					}
+				]
+			},
+			"horigins:health.11": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.11"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 11
+						}
+					}
+				]
+			},
+			"horigins:health.12": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.12"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 12
+						}
+					}
+				]
+			},
+			"horigins:health.13": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.13"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 13
+						}
+					}
+				]
+			},
+			"horigins:health.14": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.14"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 14
+						}
+					}
+				]
+			},
+			"horigins:health.15": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.15"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 15
+						}
+					}
+				]
+			},
+			"horigins:health.16": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.16"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 16
+						}
+					}
+				]
+			},
+			"horigins:health.17": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.17"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 17
+						}
+					}
+				]
+			},
+			"horigins:health.18": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.18"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 18
+						}
+					}
+				]
+			},
+			"horigins:health.19": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.19"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 19
+						}
+					}
+				]
+			},
+			"horigins:health.20": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.20"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 20
+						}
+					}
+				]
+			},
+			"horigins:health.21": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.21"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 21
+						}
+					}
+				]
+			},
+			"horigins:health.22": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.22"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 22
+						}
+					}
+				]
+			},
+			"horigins:health.23": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.23"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 23
+						}
+					}
+				]
+			},
+			"horigins:health.24": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.24"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 24
+						}
+					}
+				]
+			},
+			"horigins:health.25": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.25"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 25
+						}
+					}
+				]
+			},
+			"horigins:health.26": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.26"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 26
+						}
+					}
+				]
+			},
+			"horigins:health.27": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.27"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 27
+						}
+					}
+				]
+			},
+			"horigins:health.28": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.28"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 28
+						}
+					}
+				]
+			},
+			"horigins:health.29": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.29"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 29
+						}
+					}
+				]
+			},
+			"horigins:health.30": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.30"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 30
+						}
+					}
+				]
+			},
+			"horigins:health.31": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.31"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 31
+						}
+					}
+				]
+			},
+			"horigins:health.32": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.32"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 32
+						}
+					}
+				]
+			},
+			"horigins:health.33": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.33"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 33
+						}
+					}
+				]
+			},
+			"horigins:health.34": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.34"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 34
+						}
+					}
+				]
+			},
+			"horigins:health.35": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.35"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 35
+						}
+					}
+				]
+			},
+			"horigins:health.36": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.36"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 36
+						}
+					}
+				]
+			},
+			"horigins:health.37": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.37"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 37
+						}
+					}
+				]
+			},
+			"horigins:health.38": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.38"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 38
+						}
+					}
+				]
+			},
+			"horigins:health.39": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.39"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 39
+						}
+					}
+				]
+			},
+			"horigins:health.40": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.40"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 40
+						}
+					}
+				]
+			},
+			"horigins:health.41": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.41"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 41
+						}
+					}
+				]
+			},
+			"horigins:health.42": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.42"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 42
+						}
+					}
+				]
+			},
+			"horigins:health.43": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.43"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 43
+						}
+					}
+				]
+			},
+			"horigins:health.44": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.44"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 44
+						}
+					}
+				]
+			},
+			"horigins:health.45": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.45"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 45
+						}
+					}
+				]
+			},
+			"horigins:health.46": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.46"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 46
+						}
+					}
+				]
+			},
+			"horigins:health.47": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.47"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 47
+						}
+					}
+				]
+			},
+			"horigins:health.48": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.48"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 48
+						}
+					}
+				]
+			},
+			"horigins:health.49": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.49"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 49
+						}
+					}
+				]
+			},
+			"horigins:health.50": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.50"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 50
+						}
+					}
+				]
+			},
+			"horigins:health.51": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.51"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 51
+						}
+					}
+				]
+			},
+			"horigins:health.52": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.52"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 52
+						}
+					}
+				]
+			},
+			"horigins:health.53": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.53"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 53
+						}
+					}
+				]
+			},
+			"horigins:health.54": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.54"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 54
+						}
+					}
+				]
+			},
+			"horigins:health.55": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.55"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 55
+						}
+					}
+				]
+			},
+			"horigins:health.56": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.56"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 56
+						}
+					}
+				]
+			},
+			"horigins:health.57": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.57"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 57
+						}
+					}
+				]
+			},
+			"horigins:health.58": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.58"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 58
+						}
+					}
+				]
+			},
+			"horigins:health.59": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.59"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 59
+						}
+					}
+				]
+			},
+			"horigins:health.60": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.60"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 60
+						}
+					}
+				]
+			},
+			"horigins:health.61": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.61"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 61
+						}
+					}
+				]
+			},
+			"horigins:health.62": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.62"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 62
+						}
+					}
+				]
+			},
+			"horigins:health.63": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.63"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 63
+						}
+					}
+				]
+			},
+			"horigins:health.64": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.64"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 64
+						}
+					}
+				]
+			},
+			"horigins:health.65": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.65"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 65
+						}
+					}
+				]
+			},
+			"horigins:health.66": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.66"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 66
+						}
+					}
+				]
+			},
+			"horigins:health.67": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.67"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 67
+						}
+					}
+				]
+			},
+			"horigins:health.68": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.68"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 68
+						}
+					}
+				]
+			},
+			"horigins:health.69": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.69"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 69
+						}
+					}
+				]
+			},
+			"horigins:health.70": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.70"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 70
+						}
+					}
+				]
+			},
+			"horigins:health.71": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.71"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 71
+						}
+					}
+				]
+			},
+			"horigins:health.72": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.72"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 72
+						}
+					}
+				]
+			},
+			"horigins:health.73": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.73"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 73
+						}
+					}
+				]
+			},
+			"horigins:health.74": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.74"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 74
+						}
+					}
+				]
+			},
+			"horigins:health.75": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.75"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 75
+						}
+					}
+				]
+			},
+			"horigins:health.76": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.76"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 76
+						}
+					}
+				]
+			},
+			"horigins:health.77": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.77"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 77
+						}
+					}
+				]
+			},
+			"horigins:health.78": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.78"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 78
+						}
+					}
+				]
+			},
+			"horigins:health.79": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.79"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 79
+						}
+					}
+				]
+			},
+			"horigins:health.80": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.80"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 80
+						}
+					}
+				]
+			},
+			"horigins:health.81": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.81"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 81
+						}
+					}
+				]
+			},
+			"horigins:health.82": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.82"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 82
+						}
+					}
+				]
+			},
+			"horigins:health.83": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.83"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 83
+						}
+					}
+				]
+			},
+			"horigins:health.84": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.84"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 84
+						}
+					}
+				]
+			},
+			"horigins:health.85": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.85"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 85
+						}
+					}
+				]
+			},
+			"horigins:health.86": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.86"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 86
+						}
+					}
+				]
+			},
+			"horigins:health.87": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.87"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 87
+						}
+					}
+				]
+			},
+			"horigins:health.88": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.88"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 88
+						}
+					}
+				]
+			},
+			"horigins:health.89": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.89"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 89
+						}
+					}
+				]
+			},
+			"horigins:health.90": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.90"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 90
+						}
+					}
+				]
+			},
+			"horigins:health.91": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.91"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 91
+						}
+					}
+				]
+			},
+			"horigins:health.92": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.92"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 92
+						}
+					}
+				]
+			},
+			"horigins:health.93": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.93"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 93
+						}
+					}
+				]
+			},
+			"horigins:health.94": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.94"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 94
+						}
+					}
+				]
+			},
+			"horigins:health.95": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.95"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 95
+						}
+					}
+				]
+			},
+			"horigins:health.96": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.96"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 96
+						}
+					}
+				]
+			},
+			"horigins:health.97": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.97"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 97
+						}
+					}
+				]
+			},
+			"horigins:health.98": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.98"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 98
+						}
+					}
+				]
+			},
+			"horigins:health.99": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.99"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 99
+						}
+					}
+				]
+			},
+			"horigins:health.100": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.100"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 100
+						}
+					}
+				]
+			},
+			"horigins:health.101": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.101"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 101
+						}
+					}
+				]
+			},
+			"horigins:health.102": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.102"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 102
+						}
+					}
+				]
+			},
+			"horigins:health.103": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.103"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 103
+						}
+					}
+				]
+			},
+			"horigins:health.104": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.104"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 104
+						}
+					}
+				]
+			},
+			"horigins:health.105": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.105"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 105
+						}
+					}
+				]
+			},
+			"horigins:health.106": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.106"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 106
+						}
+					}
+				]
+			},
+			"horigins:health.107": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.107"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 107
+						}
+					}
+				]
+			},
+			"horigins:health.108": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.108"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 108
+						}
+					}
+				]
+			},
+			"horigins:health.109": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.109"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 109
+						}
+					}
+				]
+			},
+			"horigins:health.110": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.110"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 110
+						}
+					}
+				]
+			},
+			"horigins:health.111": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.111"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 111
+						}
+					}
+				]
+			},
+			"horigins:health.112": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.112"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 112
+						}
+					}
+				]
+			},
+			"horigins:health.113": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.113"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 113
+						}
+					}
+				]
+			},
+			"horigins:health.114": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.114"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 114
+						}
+					}
+				]
+			},
+			"horigins:health.115": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.115"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 115
+						}
+					}
+				]
+			},
+			"horigins:health.116": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.116"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 116
+						}
+					}
+				]
+			},
+			"horigins:health.117": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.117"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 117
+						}
+					}
+				]
+			},
+			"horigins:health.118": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.118"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 118
+						}
+					}
+				]
+			},
+			"horigins:health.119": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.119"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 119
+						}
+					}
+				]
+			},
+			"horigins:health.120": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.120"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 120
+						}
+					}
+				]
+			},
+			"horigins:health.121": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.121"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 121
+						}
+					}
+				]
+			},
+			"horigins:health.122": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.122"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 122
+						}
+					}
+				]
+			},
+			"horigins:health.123": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.123"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 123
+						}
+					}
+				]
+			},
+			"horigins:health.124": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.124"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 124
+						}
+					}
+				]
+			},
+			"horigins:health.125": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.125"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 125
+						}
+					}
+				]
+			},
+			"horigins:health.126": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.126"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 126
+						}
+					}
+				]
+			},
+			"horigins:health.127": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.127"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 127
+						}
+					}
+				]
+			},
+			"horigins:health.128": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.128"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 128
+						}
+					}
+				]
+			},
+			"horigins:health.129": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.129"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 129
+						}
+					}
+				]
+			},
+			"horigins:health.130": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.130"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 130
+						}
+					}
+				]
+			},
+			"horigins:health.131": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.131"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 131
+						}
+					}
+				]
+			},
+			"horigins:health.132": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.132"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 132
+						}
+					}
+				]
+			},
+			"horigins:health.133": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.133"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 133
+						}
+					}
+				]
+			},
+			"horigins:health.134": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.134"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 134
+						}
+					}
+				]
+			},
+			"horigins:health.135": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.135"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 135
+						}
+					}
+				]
+			},
+			"horigins:health.136": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.136"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 136
+						}
+					}
+				]
+			},
+			"horigins:health.137": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.137"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 137
+						}
+					}
+				]
+			},
+			"horigins:health.138": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.138"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 138
+						}
+					}
+				]
+			},
+			"horigins:health.139": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.139"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 139
+						}
+					}
+				]
+			},
+			"horigins:health.140": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.140"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 140
+						}
+					}
+				]
+			},
+			"horigins:health.141": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.141"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 141
+						}
+					}
+				]
+			},
+			"horigins:health.142": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.142"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 142
+						}
+					}
+				]
+			},
+			"horigins:health.143": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.143"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 143
+						}
+					}
+				]
+			},
+			"horigins:health.144": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.144"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 144
+						}
+					}
+				]
+			},
+			"horigins:health.145": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.145"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 145
+						}
+					}
+				]
+			},
+			"horigins:health.146": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.146"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 146
+						}
+					}
+				]
+			},
+			"horigins:health.147": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.147"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 147
+						}
+					}
+				]
+			},
+			"horigins:health.148": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.148"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 148
+						}
+					}
+				]
+			},
+			"horigins:health.149": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"horigins:health.149"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "!=",
+							"value": "horigins.dontupdate"
+						},
+						"set_property": {
+							"horigins:definitive_max_health": 149
+						}
+					}
+				]
+			},
+			"horigins:attack.0": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.0"
+					]
+				}
+			},
+			"horigins:attack.1": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.1"
+					]
+				}
+			},
+			"horigins:attack.2": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.2"
+					]
+				}
+			},
+			"horigins:attack.5": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.5"
+					]
+				}
+			},
+			"horigins:attack.7": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.7"
+					]
+				}
+			},
+			"horigins:attack.8": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.8"
+					]
+				}
+			},
+			"horigins:attack.9": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.9"
+					]
+				}
+			},
+			"horigins:attack.10": {
+				"add": {
+					"component_groups": [
+						"horigins:attack.10"
+					]
+				}
+			},
+			"horigins:scale.0.25": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.0.25"
+					]
+				}
+			},
+			"horigins:scale.0.5": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.0.5"
+					]
+				}
+			},
+			"horigins:scale.0.75": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.0.75"
+					]
+				}
+			},
+			"horigins:scale.1": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.1"
+					]
+				}
+			},
+			"horigins:scale.1.25": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.1.25"
+					]
+				}
+			},
+			"horigins:scale.1.5": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.1.5"
+					]
+				}
+			},
+			"horigins:scale.1.75": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.1.75"
+					]
+				}
+			},
+			"horigins:scale.2": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.2"
+					]
+				}
+			},
+			"horigins:scale.2.25": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.2.25"
+					]
+				}
+			},
+			"horigins:scale.2.5": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.2.5"
+					]
+				}
+			},
+			"horigins:scale.2.75": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.2.75"
+					]
+				}
+			},
+			"horigins:scale.3": {
+				"add": {
+					"component_groups": [
+						"horigins:scale.3"
+					]
+				}
+			},
+			"horigins:exhaustion.normal": {
+				"add": {
+					"component_groups": [
+						"horigins:exhaustion.normal"
+					]
+				}
+			},
+			"horigins:exhaustion.inneficienthealing": {
+				"add": {
+					"component_groups": [
+						"horigins:exhaustion.inneficienthealing"
+					]
+				}
+			},
+			"horigins:exhaustion.nonefrommining": {
+				"add": {
+					"component_groups": [
+						"horigins:exhaustion.nonefrommining"
+					]
+				}
+			},
+			"horigins:exhaustion.nonefrommovement": {
+				"add": {
+					"component_groups": [
+						"horigins:exhaustion.nonefrommovement"
+					]
+				}
+			},
+			"horigins:breathable.land": {
+				"add": {
+					"component_groups": [
+						"horigins:breathable.land"
+					]
+				},
+				"queue_command": {
+					"command": [
+						"tag @s add horigins.breathable.land"
+					]
+				}
+			},
+			"horigins:breathable.underwater": {
+				"add": {
+					"component_groups": [
+						"horigins:breathable.underwater"
+					]
+				},
+				"queue_command": {
+					"command": [
+						"tag @s add horigins.breathable.underwater"
+					]
+				}
+			},
+			"horigins:buoyant.normal": {
+				"remove": {
+					"component_groups": [
+						"horigins:buoyant.float_on_water"
+					]
+				}
+			},
+			"horigins:buoyant.float_on_water": {
+				"add": {
+					"component_groups": [
+						"horigins:buoyant.float_on_water"
+					]
+				}
+			}
+		}
+	}
+}
