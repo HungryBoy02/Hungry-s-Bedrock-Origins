@@ -1,0 +1,52 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"Hungry"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.36"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Hungry's Origins",
+		"description": "An origins addon for bedrock edition made to make origins more natural",
+		"min_engine_version": [
+			1,
+			20,
+			80
+		],
+		"uuid": "b1941172-8b8e-4a38-a064-5dcff4059d16",
+		"version": [
+			1,
+			0,
+			1
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "c34a1e5d-afca-476b-814b-819674cf20de",
+			"version": [
+				1,
+				0,
+				1
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "9833e790-859d-43ae-bc48-cb1bf0f8de0a",
+			"version": [
+				1,
+				0,
+				1
+			]
+		}
+	]
+}

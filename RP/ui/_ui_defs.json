@@ -1,0 +1,9 @@
+{
+    "ui_defs": [
+        "ui/custombooks.json",
+        "ui/originsconfigmain.json",
+        "ui/chooseoriginmain.json",
+        "ui/abilitiesconfig.json",
+        "ui/abilityhelp.json"
+    ]
+}

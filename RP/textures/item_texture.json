@@ -1,0 +1,12 @@
+{
+	"resource_pack_name": "Hungry's Origins",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"horigins_origin_cookie": {
+			"textures": "textures/items/OriginCookie"
+		},
+		"horigins_originguide": {
+			"textures": "textures/items/OriginGuideBook"
+		}
+	}
+}
