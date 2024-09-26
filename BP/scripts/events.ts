@@ -8,6 +8,8 @@ import { getRegisteredOrigins, clearOrigin, joinOrigin, getUserOrigin, getOrigin
 
 import { CustomFormFormData, uiTypes } from './libs/custom_forms/custom_forms.js'
 
+import { submitActionbarText } from "./libs/multi_addon_actionbar.js"
+
 var bindingPlayers = []
 
 if (world.getDynamicProperty("horigins.isRaining") == undefined) {
@@ -283,7 +285,11 @@ function processCooldowns(plr: Player) {
         message.push(currentString)
     }
     if (cooldowns.length > 0) {
-        plr.onScreenDisplay.setActionBar(message)
+        let fmessage = ""
+        for (let mes of message) {
+            fmessage = fmessage + mes
+        }
+        submitActionbarText(plr, fmessage)
     } else {
         plr.removeTag('horigins.cooldowns')
     }
