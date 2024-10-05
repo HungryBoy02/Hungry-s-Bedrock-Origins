@@ -3,15 +3,7 @@
 	"metadata": {
 		"authors": [
 			"Hungry"
-		],
-		"generated_with": {
-			"bridge": [
-				"2.7.37"
-			],
-			"dash": [
-				"0.11.7"
-			]
-		}
+		]
 	},
 	"header": {
 		"name": "Hungry's Origins",
@@ -25,7 +17,7 @@
 		"version": [
 			1,
 			0,
-			1
+			2
 		]
 	},
 	"modules": [

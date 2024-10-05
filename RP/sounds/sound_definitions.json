@@ -1,4 +1,14 @@
 {
 	"format_version": "1.14.0",
-	"sound_definitions": {}
+	"sound_definitions": {
+		"horigins.bird": {
+			"category": "player",
+			"sounds": [
+				"sounds/elytrian/bird1",
+				"sounds/elytrian/bird2",
+				"sounds/elytrian/bird3",
+				"sounds/elytrian/bird4"
+			]
+		}
+	}
 }

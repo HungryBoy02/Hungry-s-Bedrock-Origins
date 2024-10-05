@@ -5,9 +5,9 @@ const originId = 'horiginsraccoon' // Origin's unique ID
 // Players will also be tagged with "horigins.origin." this when they select this origin
 
 const originTitle = "Raccoon" // What your origin is called
-const iconTexture = 'textures/ui/origins/raccoon' // The icon for your origin
+const iconTexture = 'textures/ui/origins/racc' // The icon for your origin
 const shortDescription = " Raccoon Origin" // Your origin's short description
-const longDescription = "Raccoon Origin"
+const longDescription = "Raccoon Origin\n§cPassive Abilities:\n§rFall Immunity"
 //     ^^^^^^^^^^^^^^ your origin's long description, used when choosing or displaying your origin. use '\n' to make a new line
 
 const componentModifications = [
@@ -74,8 +74,20 @@ function toLookVector(vector2yawandpitch) {
     return { x: x, y: y, z: z };
 }
 
-var fallImmunePlayers = []
+function negateFall(plr: Player) {
+    let dimension = plr.dimension
+    if (!plr.isOnGround) {
+        let distance = -plr.getVelocity().y * 10
+        let result = dimension.getBlockFromRay(plr.location, { x: 0, y: -1, z: 0 }, { maxDistance: distance })
+        if (result) {
+            if (result.block) {
+                let block = result.block
+                plr.addEffect("slow_falling", 2, { amplifier: 0, showParticles: false })
+            }
+        }
+    }
 
+}
 // Check if someone is pouncing every tick
 system.runInterval(() => {
     // First we get if anyone has activated their pounce ability
@@ -90,7 +102,6 @@ system.runInterval(() => {
         // then we pounce!
         var lv = toLookVector(plr.getRotation())
         plr.applyKnockback(lv.x, lv.z, 3, 1 * 2)
-        fallImmunePlayers.push({ user: plr, cooldown: 1 * 20 })
     }
 
     var raccoonSneakers = world.getPlayers({ tags: ['horigins.raccoon.sneak'] })
@@ -103,28 +114,10 @@ system.runInterval(() => {
         plr.addEffect("invisibility", 10 * 20, { amplifier: 0, showParticles: false })
     }
 
-    if (fallImmunePlayers.length > 0) {
-        for (let i = 0; i < fallImmunePlayers.length; i++) {
-            var plr = fallImmunePlayers[i].user
-            fallImmunePlayers[i].cooldown = fallImmunePlayers[i].cooldown - 1
-            if (plr.isOnGround == false) {
-                plr.addEffect("jump_boost", 5, { amplifier: 250, showParticles: false })
-            } else if (fallImmunePlayers[i].cooldown < 1) {
-                plr.applyKnockback(0, 0, 0, 0.1)
-                system.runTimeout(() => {
-                    plr.applyKnockback(0, 0, 0, 0.1)
-                    plr.removeEffect("jump_boost")
-                }, 1)
-                if (i == 0) {
-                    fallImmunePlayers.shift()
-                } else if (i == fallImmunePlayers.length - 1) {
-                    fallImmunePlayers.pop()
-                } else {
-                    fallImmunePlayers.splice(i, i)
-                }
-            }
-
-        }
+    let plrs = world.getPlayers({ tags: ["horigins.origin.horiginsraccoon"] })
+    for (let i = 0; i < plrs.length; i++) {
+        plr = plrs[i]
+        negateFall(plr)
     }
 
     var lemmeInPlayers = world.getPlayers({ tags: ['horigins.raccoon.lemmein'] })

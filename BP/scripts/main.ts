@@ -4,6 +4,9 @@
 // Import world component from "@minecraft/server"
 import { initialize } from './libs/horiginsapi.js'
 initialize()
+
+import * as actionbarApi from "./libs/multi_addon_actionbar.js"
+actionbarApi.initiate()
 import './events.js'
 
 // Register origins

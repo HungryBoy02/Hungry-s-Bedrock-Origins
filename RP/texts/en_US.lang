@@ -2,3 +2,5 @@ ui.horigins.originabilitiesbutton=§r§l§6Origin Abilities§r
 ui.horigins.origintoggle=§rToggle origin abilities§r
 item.horigins:origin_cookie=Origin Cookie
 item.horigins:originguide=Hungry's Origins: Guide Book
+item.spawn_egg.entity.horigins:backpack_entity.name=Spawn Backpack Inventory
+entity.horigins:backpack_entity.name=Backpack Inventory

@@ -1,5 +1,5 @@
 import { registerOrigin } from '../libs/horiginsapi.js'
-import { system, world } from '@minecraft/server'
+import { system, world, Player } from '@minecraft/server'
 
 const originId = 'horiginsfox' // Origin's unique ID
 // Players will also be tagged with "horigins.origin." this when they select this origin
@@ -7,7 +7,7 @@ const originId = 'horiginsfox' // Origin's unique ID
 const originTitle = "Fox" // What your origin is called
 const iconTexture = 'textures/ui/origins/foxicon' // The icon for your origin
 const shortDescription = " Fox origin" // Your origin's short description
-const longDescription = "Fox origin"
+const longDescription = "Fox origin\n§cPassive Abilities:\n§r - Fall Immunity\n\nDietary Changes:\n - Berries will fill your hunger bar, and will give you positive effects"
 //     ^^^^^^^^^^^^^^ your origin's long description, used when choosing or displaying your origin. use '\n' to make a new line
 
 const componentModifications = [
@@ -20,7 +20,6 @@ const componentModifications = [
     { id: 'scale', value: '0.75' }, // Increments of .25, from 0.25 to 3, do not include trailing zeros (eg, dont write 0.50, write 0.5)
     { id: 'movement', value: '0.15' } // Increments of 0.05, no trailing zeros, changes movement speed, default vanilla movement is 0.1
 ]
-
 
 
 // THIS IS NOT IMPLEMENTED YET, IGNORE IT.
@@ -57,6 +56,39 @@ world.afterEvents.worldInitialize.subscribe(() => {
     registerOrigin(originId, originTitle, abilities, componentModifications, /*damageTypeImmunities,*/ iconTexture, shortDescription, longDescription)
 })
 
+let goodFoods = ["minecraft:glow_berries", "minecraft:sweet_berries"]
+let badFoods = []
+world.afterEvents.itemCompleteUse.subscribe(e => {
+    if (e.source.hasTag("horigins.origin.horiginsfox")) {
+        if (badFoods.includes(e.itemStack.typeId)) {
+            e.source.addEffect("hunger", 20 * 30, { amplifier: 9 })
+            e.source.addEffect("poison", 20 * 30, { amplifier: 0 })
+        } else if (goodFoods.includes(e.itemStack.typeId)) {
+            e.source.addEffect("regeneration", 20 * 5, { amplifier: 1 })
+            e.source.addEffect("speed", 20 * 30, { amplifier: 1 })
+            e.source.addEffect("saturation", 20, { amplifier: 10 })
+        }
+    }
+})
+/* for feline origin later
+let singleUseItems = ["minecraft:sugar"]
+world.afterEvents.itemUse.subscribe(e => {
+    let plr = e.source
+    if (plr.hasTag("horigins.origin.horiginsfox")) {
+        let invcomp = plr.getComponent("minecraft:inventory")
+        let item = invcomp.container.getSlot(plr.selectedSlotIndex).getItem()
+        if (singleUseItems.includes(item.typeId)) {
+            if (item.amount == 1) {
+                item = null
+            } else {
+                item.amount--;
+            }
+            invcomp.container.getSlot(plr.selectedSlotIndex).setItem(item)
+
+            // Your code here
+        }
+    }
+})*/
 
 // If you're using an MCFUNCTION file, you can delete everything below this line. Just make sure in your function to
 //  delete your ability tags after they've been used, or you'll have problems!
@@ -73,8 +105,20 @@ function toLookVector(vector2yawandpitch) {
     return { x: x, y: y, z: z };
 }
 
-var fallImmunePlayers = []
+function negateFall(plr: Player) {
+    let dimension = plr.dimension
+    if (!plr.isOnGround) {
+        let distance = -plr.getVelocity().y * 10
+        let result = dimension.getBlockFromRay(plr.location, { x: 0, y: -1, z: 0 }, { maxDistance: distance })
+        if (result) {
+            if (result.block) {
+                let block = result.block
+                plr.addEffect("slow_falling", 2, { amplifier: 0, showParticles: false })
+            }
+        }
+    }
 
+}
 // Check if someone is pouncing every tick
 system.runInterval(() => {
     // First we get if anyone has activated their pounce ability
@@ -89,11 +133,9 @@ system.runInterval(() => {
         // then we pounce!
         var lv = toLookVector(plr.getRotation())
         plr.applyKnockback(lv.x, lv.z, 10, 1 * 1.5)
-        fallImmunePlayers.push({ user: plr, cooldown: 1 * 20 })
     }
 
     var foxSneakers = world.getPlayers({ tags: ['horigins.fox.sneak'] })
-
     for (let i = 0; i < foxSneakers.length; i++) {
         var plr = foxSneakers[i]
 
@@ -101,29 +143,10 @@ system.runInterval(() => {
 
         plr.addEffect("invisibility", 10 * 20, { amplifier: 0, showParticles: false })
     }
-
-    if (fallImmunePlayers.length > 0) {
-        for (let i = 0; i < fallImmunePlayers.length; i++) {
-            var plr = fallImmunePlayers[i].user
-            fallImmunePlayers[i].cooldown = fallImmunePlayers[i].cooldown - 1
-            if (plr.isOnGround == false) {
-                plr.addEffect("jump_boost", 5, { amplifier: 250, showParticles: false })
-            } else if (fallImmunePlayers[i].cooldown < 1) {
-                plr.applyKnockback(0, 0, 0, 0.1)
-                system.runTimeout(() => {
-                    plr.applyKnockback(0, 0, 0, 0.1)
-                    plr.removeEffect("jump_boost")
-                }, 1)
-                if (i == 0) {
-                    fallImmunePlayers.shift()
-                } else if (i == fallImmunePlayers.length - 1) {
-                    fallImmunePlayers.pop()
-                } else {
-                    fallImmunePlayers.splice(i, i)
-                }
-            }
-
-        }
+    let plrs = world.getPlayers({ tags: ["horigins.origin.horiginsfox"] })
+    for (let i = 0; i < plrs.length; i++) {
+        plr = plrs[i]
+        negateFall(plr)
     }
 
 })
