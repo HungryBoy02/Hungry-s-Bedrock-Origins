@@ -12,17 +12,21 @@ function initialize() {
 
     system.afterEvents.scriptEventReceive.subscribe((event) => {
         if (event.id == "horigins:registerorigin") {
-            var message = event.message.substring(1, event.message.length - 1).replaceAll('[**aarp', '"')
-            var data = JSON.parse(message)
+            let message = event.message.substring(1, event.message.length - 1).replaceAll('[**aarp', '"')
+            let data = JSON.parse(message)
             world.setDynamicProperty("horigins.origin." + data.originId, JSON.stringify(data))
         } else if (event.id == "horigins:registerorigingamerule") {
-            var gamerule = JSON.parse(event.message.replaceAll('[**aarp', '"'))
-            var originGameruleTest = getOriginGamerule(gamerule.gameruleId)
+            let gamerule = JSON.parse(event.message.replaceAll('[**aarp', '"'))
+            let originGameruleTest = getOriginGamerule(gamerule.gameruleId)
             if (originGameruleTest == false) {
                 var currentGamerules = getOriginGamerules()
                 currentGamerules.push(gamerule)
                 world.setDynamicProperty("horigins.gamerules", JSON.stringify(currentGamerules))//currentGamerules
             }
+        } else if (event.id == "horigins:registerability") {
+            let message = event.message//.substring(1, event.message.length - 1).replaceAll('[**aarp', '"')
+            let data = JSON.parse(message)
+            world.setDynamicProperty("horigins.origin." + data.originId + '.abilities.' + data.ability.abilityId, JSON.stringify(data.ability))
         }
     })
 }
@@ -100,25 +104,39 @@ function resetPlayerComponents(user: Player) {
 
 function registerOrigin(originId: string, originName: string, originAbilities, componentModifiers, /*damageTypeImmunites,*/ originIconTexturePath: string, originDescription: string, longDescription: string) {
     //var currentOrigins = world.getDynamicProperty("horigins.origins")
-    world.getDimension("overworld").runCommand('scriptevent horigins:registerorigin "' + JSON.stringify({ originId: originId, originName: originName, originAbilities: originAbilities, componentModifiers: componentModifiers, /*immunityTags: damageTypeImmunites,*/ icon: originIconTexturePath, description: originDescription, longDescription: longDescription }).replaceAll('"', '[**aarp') + '"')
+    world.getDimension("overworld").runCommand('scriptevent horigins:registerorigin "' + JSON.stringify({ originId: originId, originName: originName, componentModifiers: componentModifiers, /*immunityTags: damageTypeImmunites,*/ icon: originIconTexturePath, description: originDescription, longDescription: longDescription }).replaceAll('"', '[**aarp') + '"')
+    for (let ability of originAbilities) {
+        //system.waitTicks(1)
+        world.getDimension("overworld").runCommand('scriptevent horigins:registerability ' + JSON.stringify({ originId: originId, ability: ability }))
+    }
+
     //world.setDynamicProperty("horigins.origin." + originId, JSON.stringify({ originId: originId, originName: originName, originAbilities: originAbilities, componentModifiers: componentModifiers, /*immunityTags: damageTypeImmunites,*/ icon: originIconTexturePath, description: originDescription, longDescription: longDescription }))
 }
 
 function getRegisteredOriginIds() {
-    var ids = world.getDynamicPropertyIds()
-    var originIds = []
+    let ids = world.getDynamicPropertyIds()
+    let originIds = []
     for (let i = 0; i < ids.length; i++) {
-        if (ids[i].startsWith("horigins.origin")) {
+        if (ids[i].startsWith("horigins.origin") && !ids[i].includes(".abilities.")) {
             originIds.push(ids[i])
         }
     }
     return originIds
 }
 function getRegisteredOrigins() {
-    var ids = getRegisteredOriginIds()
-    var origins = []
-    for (let i = 0; i < ids.length; i++) {
-        origins.push(JSON.parse(world.getDynamicProperty(ids[i])))
+    let ids = getRegisteredOriginIds()
+    let origins = []
+    for (let id of ids) {
+        let origin = JSON.parse(world.getDynamicProperty(id))
+        let abilities = []
+        let abilityids = world.getDynamicPropertyIds()
+        for (let i = 0; i < abilityids.length; i++) {
+            if (abilityids[i].startsWith(id + ".abilities.")) {
+                abilities.push(JSON.parse(world.getDynamicProperty(abilityids[i])))
+            }
+        }
+        origin.originAbilities = abilities
+        origins.push(origin)
     }
     return origins;
 }
